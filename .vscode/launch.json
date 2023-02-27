@@ -1,0 +1,40 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "env": {
+        "TDS_BASE_URL": "https://service.sandbox.3dsecure.io",
+        "TDS_API_KEY": "bdca3cc1-2e1b-4dff-8ce9-7e0f6690a1d1"
+      },
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug executable 'three_ds'",
+      "cargo": {
+        "args": ["build", "--bin=three_ds", "--package=three_ds"],
+        "filter": {
+          "name": "three_ds",
+          "kind": "bin"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug unit tests in executable 'three_ds'",
+      "cargo": {
+        "args": ["test", "--no-run", "--bin=three_ds", "--package=three_ds"],
+        "filter": {
+          "name": "three_ds",
+          "kind": "bin"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}
