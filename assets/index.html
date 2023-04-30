@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3ds</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <div>
+      <form class="container" id="three-ds-form">
+        <div class="row">
+          <input
+            class="three-ds-form__input"
+            value="4111111111111111"
+            type="text"
+            id="three-ds-form__account-number"
+            placeholder="Account number"
+          />
+          <input
+            class="three-ds-form__input"
+            value="10/28"
+            type="text"
+            id="three-ds-form__expiry-date"
+            placeholder="Expiry date"
+          />
+        </div>
+        <input
+          class="three-ds-form__input"
+          value="visa"
+          type="text"
+          id="three-ds-form__brand"
+          placeholder="Brand"
+        />
+        <button class="three-ds-form__button" id="three-ds-form__submit">
+          Perform 3ds
+        </button>
+      </form>
+
+      <div class="container hidden" id="three-ds-fingerprint">
+        <form id="three-ds-fingerprint__form" name="three-ds-fingerprint__form">
+          <input
+            type="hidden"
+            name="threeDSMethodData"
+            id="threeDSMethodData"
+          />
+        </form>
+      </div>
+
+      <div class="container hidden" id="three-ds-challenge">
+        <form id="three-ds-challenge__form">
+          <input type="hidden" name="creq" id="creq" />
+          <input
+            type="hidden"
+            name="threeDSSessionData"
+            id="threeDSSessionData"
+          />
+        </form>
+      </div>
+
+      <ul class="container hidden" id="three-ds-timeline"></ul>
+    </div>
+  </body>
+
+  <script src="./scripts.js"></script>
+</html>

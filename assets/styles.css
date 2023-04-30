@@ -1,0 +1,130 @@
+@import url('https://fonts.cdnfonts.com/css/poppins');
+
+:root {
+  --primary-color: #e76161;
+  --secondary-color: #f99b7d;
+  --thirtiary-color: #8bacaa;
+}
+
+*,
+html {
+  font-family: Poppins, Arial, Helvetica, sans-serif;
+  transition: all 200ms ease-in-out;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  scroll-behavior: smooth;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  margin: 4px 0;
+  border-radius: 4px;
+}
+
+.hidden {
+  display: none;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex: 1;
+}
+
+#three-ds-form__account-number {
+  width: 100%;
+}
+
+#three-ds-form__expiry-date {
+  width: 15%;
+}
+
+#three-ds-form__brand {
+  width: 20%;
+}
+
+.three-ds-form__input {
+  border: 1px solid lightgray;
+  margin: 4px;
+  padding: 12px;
+  border-radius: 4px;
+}
+
+.disabled {
+  cursor: not-allowed !important;
+  background: gray !important;
+}
+
+.three-ds-form__button {
+  border: none;
+  padding: 16px;
+  width: 100%;
+  margin: 4px 0;
+  background: linear-gradient(
+    to bottom,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+iframe[name='three-ds-challenge__iframe'] {
+  height: 350px;
+  width: 100%;
+  border: 0;
+}
+
+.three-ds-timeline__item-warning__container {
+  font-size: 12px;
+  padding: 8px;
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+.three-ds-timeline__item-error__container {
+  font-size: 12px;
+  padding: 8px;
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+.three-ds-timeline__item-ok__container {
+  font-size: 12px;
+  padding: 8px;
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+#three-ds-last-transactions {
+  list-style: none;
+  margin-top: 16px;
+}
+
+#three-ds-last-transactions li:nth-child(odd) {
+  color: var(--primary-color);
+}
+
+#three-ds-last-transactions li:nth-child(even) {
+  color: gray;
+}
