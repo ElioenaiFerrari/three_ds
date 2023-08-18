@@ -6,7 +6,7 @@ defmodule ThreeDs.TdSecureIo.Auth.Request do
   @account_number_regex ~r/^\d{13,19}$/
   @valid_account_types ~w(not_applicable credit debit)
   @valid_transaction_types ~w(purchase_service check_acceptance account_funding quasi_cash prepaid_activation)
-  @valid_indicators ~w(done refused not_performed)
+  @valid_indicators ~w(approved refused not_performed)
 
   @mapped_device_channels %{
     "app" => "01",
@@ -15,7 +15,7 @@ defmodule ThreeDs.TdSecureIo.Auth.Request do
   }
 
   @mapped_indicators %{
-    "done" => "Y",
+    "approved" => "Y",
     "refused" => "N",
     "not_performed" => "U"
   }

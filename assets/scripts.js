@@ -6,9 +6,9 @@
  * @property {string} [acs_id]
  * @property {string} [acs_url]
  * @property {Encrypted} [authentication_value]
- * @property {"done" | "refused" | "not_performed"} [challenge_indicator]
+ * @property {"approved" | "refused" | "not_performed"} [challenge_indicator]
  * @property {string} [device_channel]
- * @property {"done" | "refused" | "not_performed"} [fingerprint_indicator]
+ * @property {"approved" | "refused" | "not_performed"} [fingerprint_indicator]
  * @property {string} [fingerprint_url]
  * @property {string} [stone_id]
  * @property {string} protocol_version
@@ -90,7 +90,7 @@
  * @property {Browser} browser
  * @property {PaymentCard} payment_card
  * @property {"app" | "browser" | "three_ds_requestor"} device_channel
- * @property {"done" | "refused" | "not_performed"} challenge_cycle_indicator
+ * @property {"approved" | "refused" | "not_performed"} challenge_cycle_indicator
  * @property {string} requestor_url
  * @property {Phone[]} phones
  * @property {Purchase} purchase
@@ -283,7 +283,7 @@ const onFingerprintDone = async (event) => {
         tz: new Date().getTimezoneOffset(),
         user_agent: navigator.userAgent,
       },
-      challenge_cycle_indicator: 'done',
+      challenge_cycle_indicator: 'approved',
       device_channel: 'browser',
       email: 'test@test.com',
       payment_card: {

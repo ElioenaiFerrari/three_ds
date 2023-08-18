@@ -9,7 +9,7 @@ defmodule ThreeDs.TdSecureIo.Auth.Response do
 
   @mapped_challenge_indicator %{
     "N" => "refused",
-    "Y" => "done",
+    "Y" => "approved",
     "U" => "not_performed"
   }
 

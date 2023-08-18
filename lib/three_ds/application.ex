@@ -7,6 +7,8 @@ defmodule ThreeDs.Application do
 
   @impl true
   def start(_type, _args) do
+    # :ok = :opentelemetry_cowboy.setup()
+
     children = [
       ThreeDs.Repo,
       {Plug.Cowboy, plug: ThreeDsWeb.Endpoint, scheme: :http, options: [port: 4000]}

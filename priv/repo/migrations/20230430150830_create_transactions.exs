@@ -5,6 +5,7 @@ defmodule ThreeDs.Repo.Migrations.CreateTransactions do
     create table(:transactions, primary_key: false) do
       add(:server_id, :string, primary_key: true)
 
+      add(:account_number, :string)
       add(:acs_id, :string)
       add(:ds_id, :string)
       add(:stone_id, :string)

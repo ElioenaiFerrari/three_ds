@@ -11,7 +11,7 @@ defmodule ThreeDs.TdSecureIo.PostAuth.Response do
 
   @mapped_indicator %{
     "N" => "refused",
-    "Y" => "done",
+    "Y" => "approved",
     "U" => "not_performed"
   }
 

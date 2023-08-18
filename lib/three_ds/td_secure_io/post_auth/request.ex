@@ -2,9 +2,9 @@ defmodule ThreeDs.TdSecureIo.PostAuth.Request do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @valid_indicators ~w(done refused not_performed)
+  @valid_indicators ~w(approved refused not_performed)
   # @mapped_indicators %{
-  #   "done" => "Y",
+  #   "approved" => "Y",
   #   "refused" => "N",
   #   "not_performed" => "U"
   # }

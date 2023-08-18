@@ -1,16 +1,19 @@
 defmodule ThreeDs.TdSecureIo.Api do
   use Tesla
+  require OpenTelemetry.Tracer
+  alias OpenTelemetry.Tracer
   alias ThreeDs.TdSecureIo.{PreAuth, Auth, PostAuth}
   @api_key Application.compile_env!(:three_ds, :tds_provider_api_key)
   @base_url Application.compile_env!(:three_ds, :tds_provider_base_url)
 
   @mapped_indicators %{
-    "Y" => "done",
+    "Y" => "approved",
     "N" => "refused",
     "U" => "not_performed"
   }
 
   plug(Tesla.Middleware.BaseUrl, @base_url)
+  # plug(Tesla.Middleware.OpenTelemetry)
 
   plug(Tesla.Middleware.Headers, [
     {"APIKey", @api_key},
@@ -36,15 +39,19 @@ defmodule ThreeDs.TdSecureIo.Api do
   end
 
   def pre_auth(attrs \\ %{}) do
-    with %Ecto.Changeset{valid?: true} = request <-
-           PreAuth.Request.changeset(
-             %PreAuth.Request{},
-             attrs
-           ),
-         {:ok, request_json} <- PreAuth.Request.encode(request) do
-      post!("/preauth", request_json, headers: [])
-      |> Map.fetch!(:body)
-      |> handle_response()
+    Tracer.with_span "pre_auth.provider" do
+      with %Ecto.Changeset{valid?: true} = request <-
+             PreAuth.Request.changeset(
+               %PreAuth.Request{},
+               attrs
+             ),
+           _ <- Tracer.add_event("validate changeset", request),
+           {:ok, request_json} <- PreAuth.Request.encode(request),
+           _ <- Tracer.add_event("encoding request", request_json) do
+        post!("/preauth", request_json, headers: [])
+        |> Map.fetch!(:body)
+        |> handle_response()
+      end
     end
   end
 
